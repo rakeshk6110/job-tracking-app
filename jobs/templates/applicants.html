@@ -1,0 +1,29 @@
+<h2>Applicants for {{ job.title }}</h2>
+
+{% for app in applications %}
+
+<p>Candidate: {{ app.candidate.username }}</p>
+
+<p>Resume:
+<a href="{{ app.resume.url }}">View Resume</a>
+</p>
+
+<p>Status: {{ app.status }}</p>
+
+<form method="POST" action="/jobs/update-status/{{ app.id }}/">
+    {% csrf_token %}
+    
+    <select name="status">
+        <option value="applied">Applied</option>
+        <option value="shortlisted">Shortlisted</option>
+        <option value="interview">Interview</option>
+        <option value="selected">Selected</option>
+        <option value="rejected">Rejected</option>
+    </select>
+
+    <button type="submit">Update</button>
+</form>
+
+<hr>
+
+{% endfor %}

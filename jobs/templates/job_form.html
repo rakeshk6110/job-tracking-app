@@ -1,0 +1,12 @@
+
+{% extends 'accounts/home.html' %}
+{% block content %}
+<center>
+    <form action="" method="POST" >
+    <h1>Job List</h1>
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Post</button>
+</form>
+</center>
+{% endblock %}

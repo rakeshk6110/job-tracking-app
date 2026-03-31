@@ -1,0 +1,19 @@
+
+{% extends 'accounts/home.html' %}
+{% block content %}
+<h2>My Applicatoins</h2>
+
+
+{% for app in applicatons %}
+ <p><b>Name: </b>{{app.candidate.username}}</p>
+ <p><b>Job: </b>{{app.job.title}}</p>
+ <p><b>Company: </b>{{app.job.company}}</p>
+ <p><b>Status: </b>{{app.status}}</p>
+ <hr>
+
+ {% empty %}
+ <p>No Applicatons yet</p>
+ {% endfor %}
+
+ <!-- <button ><a href="{% url 'logout' %}">Logout</a></button> -->
+{% endblock %}

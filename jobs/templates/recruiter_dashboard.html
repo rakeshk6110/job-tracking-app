@@ -1,0 +1,16 @@
+{% extends 'accounts/home.html' %}
+{% block content %}
+<h2>My jobs</h2>
+
+{% for job in jobs%}
+<p><b>Title:</b>{{job.title}}</p>
+<p><b>Company:</b>{{job.company}}</p>
+<a href="/jobs/applicants/{{job.id}}">View Applicants</a>
+<hr>
+
+{% empty %}
+<p>No jobs posted</p>
+{% endfor %}
+
+<!-- <button ><a href="{% url 'logout' %}">Logout</a></button> -->
+{% endblock %}

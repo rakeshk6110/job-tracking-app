@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Portal</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}?=123">
+</head>
+
+<body>
+    
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>JobPortal</h2>
+
+    <div>
+        {% if request.user.is_authenticated %}
+
+            {% if request.user.role == 'candidate' %}
+                <h3>{{ request.user.username}}</h3>
+                <a href="{% url 'candidate_dashboard' %}">Dashboard</a>
+                
+            {% endif %}
+
+            {% if request.user.role == 'recruiter' %}
+                <h3>{{ request.user.username}}</h3>
+                <a href="{% url 'recruiter_dashboard' %}">Dashboard</a>
+                <a href="{% url 'add_job' %}">Post Job</a>
+            {% endif %}
+
+            <a href="/logout/">Logout</a>
+
+        {% else %}
+            <a href="/login/">Login</a>
+            <a href="/register/">Register</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- HERO SECTION -->
+ <main>
+     {% block content %}
+     {% endblock %}
+ </main>
+
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© 2026 JobPortal | Built with Django</p>
+</div>
+
+</body>
+</html>

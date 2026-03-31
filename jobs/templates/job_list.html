@@ -1,0 +1,32 @@
+
+
+{% extends 'accounts/home.html' %}
+{% block content %}
+<h2>Available Jobs</h2>
+
+<form method="GET">
+    <input type="text" name="q" placeholder="search jobs">
+    <input type="text" name="location" placeholder="Location">
+    <button type="submit">search</button>
+</form>
+<hr>
+
+{% for job in jobs %}
+
+<h3>{{ job.title }}</h3>
+<p>{{ job.company }}</p>
+<p>{{ job.location }}</p>
+<p>Salary: {{ job.salary }}</p>
+
+{% if request.user.role == 'candidate' %}
+<a href="/jobs/apply/{{ job.id }}">Apply</a>
+{% endif %}
+
+{% if request.user.role == 'recruiter' %}
+<a href="/jobs/applicants/{{ job.id }}">View Applicants</a>
+{% endif %}
+
+<hr>
+
+{% endfor %}
+{% endblock %}

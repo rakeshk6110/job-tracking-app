@@ -1,0 +1,40 @@
+
+{% extends 'accounts/home.html' %}
+{% load static %}
+{% block content %}
+
+<div class="hero">
+    <h1>Find Your Dream Job</h1>
+    <p>Connect with top recruiters and apply easily</p>
+
+    {% if not request.user.is_authenticated %}
+        <a href="/register/"><button>Get Started</button></a>
+    {% endif %}
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+    {% if request.user.is_authenticated %}
+    <div class="card">
+        {% if request.user.role == 'candidate' %}
+            <a href="{% url 'list_job' %}"><h3>Easy Apply</h3></a>
+            <p>Apply for jobs in one click with resume upload</p>
+        {% elif request.user.role == 'recruiter' %}
+            <a href="{% url 'add_job' %}"><h3>Post Job</h3></a>
+            <p>Post the jobs in one click </p>
+       
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <a href="{% url 'candidate_dashboard' %}"><h3>Track Applications</h3></a>
+        <p>Monitor your application status in real-time</p>
+    </div>
+    {% endif %}
+    <!-- <div class="card">
+        <h3>Recruiter Tools</h3>
+        <p>Post jobs and manage candidates easily</p>
+    </div> -->
+
+</div>
+{% endblock %}
