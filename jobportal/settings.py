@@ -71,16 +71,16 @@ WSGI_APPLICATION = 'jobportal.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jobdatabase',
-        'USER': 'root',
-        'PASSWORD' : 'Rakesh3067#',
-        'HOST' : 'localhost',
-        'PORT' : '3306'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'jobdatabase',
+#         'USER': 'root',
+#         'PASSWORD' : 'Rakesh3067#',
+#         'HOST' : 'localhost',
+#         'PORT' : '3306'
+#     }
+# }
 
 
 
