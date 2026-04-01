@@ -27,7 +27,11 @@
     </div>
 
     <div class="card">
-        <a href="{% url 'candidate_dashboard' %}"><h3>Track Applications</h3></a>
+         {% if request.user.role == 'candidate' %}
+            <a href="{% url 'candidate_dashboard' %}"><h3>Track Applications</h3></a>
+         {% elif request.user.role == 'recruiter' %}
+            <a href="{% url 'recruiter_dashboard' %}"><h3>Track Applications</h3></a>
+        {% endif %}
         <p>Monitor your application status in real-time</p>
     </div>
     {% endif %}

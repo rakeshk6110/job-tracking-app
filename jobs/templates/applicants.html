@@ -1,3 +1,7 @@
+{% extends 'accounts/home.html' %}
+{% load static %}
+{% block content %}
+
 <h2>Applicants for {{ job.title }}</h2>
 
 {% for app in applications %}
@@ -27,3 +31,4 @@
 <hr>
 
 {% endfor %}
+{% endblock %}
